@@ -26,8 +26,7 @@ def get_metric_data(bucket, storage_type):
         Period=86400,
         Statistics=['Maximum']
     )
-    datapoints = response['Datapoints']
-    if datapoints:
+    if datapoints := response['Datapoints']:
         return max([datapoint['Maximum'] for datapoint in datapoints])
     else:
         return 0
